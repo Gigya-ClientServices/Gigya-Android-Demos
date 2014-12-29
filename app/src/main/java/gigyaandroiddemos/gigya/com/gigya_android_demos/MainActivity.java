@@ -15,7 +15,9 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 //import android.support.v4.app.FragmentActivity;
 
+import com.gigya.socialize.*;
 import com.gigya.socialize.android.*;
+import com.gigya.socialize.android.event.*;
 
 
 public class MainActivity extends ActionBarActivity
@@ -45,10 +47,30 @@ public class MainActivity extends ActionBarActivity
      */
     private CharSequence mTitle;
 
+    private GSObject mUser;
+
+    public GSObject getUser() {
+        return mUser;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialize Gigya before anything loads so it's available to all child fragments on load
+        GSAPI.getInstance().initialize(this, getString(R.string.gigya_api_key));
+        GSAPI.getInstance().setAccountsEventListener(new GSAccountsEventListener() {
+            @Override
+            public void onLogin(GSObject user, Object context) {
+                mUser = user;
+            }
+
+            @Override
+            public void onLogout(Object context) {
+                mUser = null;
+            }
+        });
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -58,9 +80,6 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-
-        // Initialize Gigya
-        GSAPI.getInstance().initialize(this, getString(R.string.gigya_api_key));
     }
 
     @Override

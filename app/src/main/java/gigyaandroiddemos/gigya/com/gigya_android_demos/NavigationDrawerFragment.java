@@ -23,6 +23,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.gigya.socialize.android.*;
+
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
@@ -204,11 +206,13 @@ public class NavigationDrawerFragment extends Fragment {
 
         //Toast.makeText(getActivity(), "Navigation ID:" + mCurrentSelectedPosition , Toast.LENGTH_SHORT).show();
         FragmentManager fragmentManager = getFragmentManager();
+        GSAPI gigya = GSAPI.getInstance();
+
         switch (mCurrentSelectedPosition) {
             case 0:
                 // Main Screen
                 SessionInfoFragment sessionInfoFragment = new SessionInfoFragment();
-                //Bundle args = new Bundle();
+                Bundle args = new Bundle();
                 //args.putInt(MainScreenFragment.ARG_PARAM1, mCurrentSelectedPosition);
                 //fragment.setArguments(args);
 

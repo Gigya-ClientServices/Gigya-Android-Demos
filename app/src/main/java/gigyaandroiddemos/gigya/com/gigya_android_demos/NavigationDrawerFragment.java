@@ -207,14 +207,14 @@ public class NavigationDrawerFragment extends Fragment {
         switch (mCurrentSelectedPosition) {
             case 0:
                 // Main Screen
-                MainScreenFragment mainScreenFragment = new MainScreenFragment();
+                SessionInfoFragment sessionInfoFragment = new SessionInfoFragment();
                 //Bundle args = new Bundle();
                 //args.putInt(MainScreenFragment.ARG_PARAM1, mCurrentSelectedPosition);
                 //fragment.setArguments(args);
 
                 // Insert the fragment by replacing any existing fragment
                 fragmentManager.beginTransaction()
-                    .replace(R.id.container, (Fragment) mainScreenFragment)
+                    .replace(R.id.container, (Fragment) sessionInfoFragment)
                     .commit();
                 break;
             case 1:

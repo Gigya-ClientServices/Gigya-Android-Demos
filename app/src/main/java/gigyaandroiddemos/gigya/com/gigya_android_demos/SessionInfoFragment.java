@@ -7,17 +7,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.gigya.socialize.android.*;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MainScreenFragment.OnFragmentInteractionListener} interface
+ * {@link SessionInfoFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MainScreenFragment#newInstance} factory method to
+ * Use the {@link SessionInfoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainScreenFragment extends Fragment {
+public class SessionInfoFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,11 +39,11 @@ public class MainScreenFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MainScreenFragment.
+     * @return A new instance of fragment SessionInfoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MainScreenFragment newInstance(String param1, String param2) {
-        MainScreenFragment fragment = new MainScreenFragment();
+    public static SessionInfoFragment newInstance(String param1, String param2) {
+        SessionInfoFragment fragment = new SessionInfoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -47,7 +51,7 @@ public class MainScreenFragment extends Fragment {
         return fragment;
     }
 
-    public MainScreenFragment() {
+    public SessionInfoFragment() {
         // Required empty public constructor
     }
 
@@ -64,7 +68,7 @@ public class MainScreenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_screen, container, false);
+        return inflater.inflate(R.layout.fragment_session_info, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -83,6 +87,18 @@ public class MainScreenFragment extends Fragment {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+
+        // TODO: This isn't working, and I don't know why.  It's initialized in the MainActivity and works.
+        //GSAPI gigya = GSAPI.getInstance();
+        //TextView sessionText = (TextView) getView().findViewById(R.id.status_value);
+
+        //if (gigya.getSession().isValid()) {
+            //sessionText.setText(getString(R.string.logged_in));
+            //Toast.makeText(getActivity(), "Active.", Toast.LENGTH_SHORT).show();
+        //} else {
+            //sessionText.setText(getString(R.string.logged_out));
+            //Toast.makeText(getActivity(), "Not Active.", Toast.LENGTH_SHORT).show();
+        //}
     }
 
     @Override

@@ -13,12 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.app.FragmentActivity;
+//import android.support.v4.app.FragmentActivity;
+
+import com.gigya.socialize.android.*;
 
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
-        MainScreenFragment.OnFragmentInteractionListener,
+        SessionInfoFragment.OnFragmentInteractionListener,
         GSWebBridgeFragment.OnFragmentInteractionListener,
         PublishUserActionFragment.OnFragmentInteractionListener,
         CommentsPluginFragment.OnFragmentInteractionListener
@@ -56,6 +58,9 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        // Initialize Gigya
+        GSAPI.getInstance().initialize(this, getString(R.string.gigya_api_key));
     }
 
     @Override

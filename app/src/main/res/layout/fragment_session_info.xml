@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:layout_gravity="center_horizontal|top"
 
-    tools:context="gigyaandroiddemos.gigya.com.gigya_android_demos.MainScreenFragment">
+    tools:context="gigyaandroiddemos.gigya.com.gigya_android_demos.SessionInfoFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -15,16 +15,15 @@
         android:text="@string/status"
         android:id="@+id/status_label"
         android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="25dp" />
+        android:layout_marginStart="26dp"
+        android:layout_below="@+id/session_info_label"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="null"
+        android:text="@string/null_value"
         android:id="@+id/status_value"
         android:layout_gravity="center_horizontal|center_vertical"
         android:textStyle="bold"
@@ -38,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="User Info"
+        android:text="@string/user_info_label"
         android:id="@+id/user_info_label"
         android:layout_marginTop="37dp"
         android:layout_below="@+id/status_value"
@@ -49,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Name:"
+        android:text="@string/name_label"
         android:id="@+id/name_label"
         android:layout_below="@+id/user_info_label"
         android:layout_alignStart="@+id/status_label" />
@@ -58,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Email:"
+        android:text="@string/email_label"
         android:id="@+id/email_label"
         android:layout_below="@+id/name_label"
         android:layout_alignStart="@+id/name_label" />
@@ -67,8 +66,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="null"
-        android:id="@+id/textView2"
+        android:text="@string/null_value"
+        android:id="@+id/name_value"
         android:layout_gravity="center_horizontal|center_vertical"
         android:textStyle="bold"
         android:layout_alignTop="@+id/name_label"
@@ -80,13 +79,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="null"
-        android:id="@+id/textView3"
+        android:text="@string/null_value"
+        android:id="@+id/email_value"
         android:layout_gravity="center_horizontal|center_vertical"
         android:textStyle="bold"
         android:layout_alignBottom="@+id/email_label"
         android:layout_alignStart="@+id/user_info_label"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/name_value"
         android:gravity="center_vertical|center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/session_info_label"
+        android:id="@+id/session_info_label"
+        android:layout_marginTop="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
 
 </RelativeLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Gigya-Android-Demos</string>
+    <string name="app_id">368592606648443</string>
+    <string name="title_section1">Main Screen</string>
+    <string name="title_section2">GSWebBridge</string>
+    <string name="title_section3">Publish User Action</string>
+    <string name="title_section4">Comments View</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_login_native">Native Mobile Login</string>
+    <string name="action_login_raas">RaaS Login</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="copyright">Copyright © 2014 Gigya</string>
+
+    <string name="status">Status:</string>
+    <string name="logged_in">Logged In</string>
+    <string name="logged_out">Logged Out</string>
+
+    <string name="publish_user_action_label">Enter Text to Publish</string>
+    <string name="publish_user_action_note">This will only publish to the currently logged in social network.  If you do not have an active social network connection than this will fail.</string>
+
+</resources>

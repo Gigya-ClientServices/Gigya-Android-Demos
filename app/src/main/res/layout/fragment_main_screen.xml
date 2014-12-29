@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal|top"
+
+    tools:context="gigyaandroiddemos.gigya.com.gigya_android_demos.MainScreenFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/status"
+        android:id="@+id/status_label"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="null"
+        android:id="@+id/status_value"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:textStyle="bold"
+        android:layout_alignStart="@+id/user_info_label"
+        android:layout_alignBottom="@+id/status_label"
+        android:layout_alignTop="@+id/status_label"
+        android:textAlignment="center"
+        android:gravity="center_vertical|center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="User Info"
+        android:id="@+id/user_info_label"
+        android:layout_marginTop="37dp"
+        android:layout_below="@+id/status_value"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Name:"
+        android:id="@+id/name_label"
+        android:layout_below="@+id/user_info_label"
+        android:layout_alignStart="@+id/status_label" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Email:"
+        android:id="@+id/email_label"
+        android:layout_below="@+id/name_label"
+        android:layout_alignStart="@+id/name_label" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="null"
+        android:id="@+id/textView2"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/name_label"
+        android:layout_alignStart="@+id/user_info_label"
+        android:layout_alignBottom="@+id/name_label"
+        android:gravity="center_vertical|center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="null"
+        android:id="@+id/textView3"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:textStyle="bold"
+        android:layout_alignBottom="@+id/email_label"
+        android:layout_alignStart="@+id/user_info_label"
+        android:layout_below="@+id/textView2"
+        android:gravity="center_vertical|center_horizontal" />
+
+</RelativeLayout>

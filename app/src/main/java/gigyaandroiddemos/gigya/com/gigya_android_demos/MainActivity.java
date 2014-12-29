@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.Toast;
 //import android.support.v4.app.FragmentActivity;
 
 import com.gigya.socialize.*;
@@ -69,6 +70,7 @@ public class MainActivity extends ActionBarActivity
             @Override
             public void onLogout(Object context) {
                 mUser = null;
+                Toast.makeText(getParent(), "You have logged out.", Toast.LENGTH_LONG).show();
             }
         });
 

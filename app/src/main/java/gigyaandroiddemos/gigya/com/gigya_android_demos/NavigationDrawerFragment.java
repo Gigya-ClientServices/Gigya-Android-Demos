@@ -23,7 +23,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.gigya.socialize.*;
 import com.gigya.socialize.android.*;
+import com.gigya.socialize.android.event.GSDialogListener;
+import com.gigya.socialize.android.event.GSLoginUIListener;
+import com.gigya.socialize.android.event.GSPluginListener;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -311,15 +315,62 @@ public class NavigationDrawerFragment extends Fragment {
 
         // Handle Actions Here
         if (item.getItemId() == R.id.action_login_native) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+            // TODO: Gigya native social login here.
+            GSObject params = new GSObject();
+            params.put("enabledProviders", "facebook,twitter,googleplus");
+            GSAPI.getInstance().showLoginUI(params, new GSLoginUIListener() {
+                @Override
+                public void onLogin(String s, GSObject gsObject, Object o) {
+
+                }
+
+                @Override
+                public void onLoad(Object o) {
+
+                }
+
+                @Override
+                public void onClose(boolean b, Object o) {
+
+                }
+
+                @Override
+                public void onError(GSResponse gsResponse, Object o) {
+
+                }
+            }, null);
             return true;
         }
         else if (item.getItemId() == R.id.action_login_raas) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+            // TODO: Gigya RaaS login here.
+            GSObject params = new GSObject();
+            params.put("enabledProviders", "facebook,twitter,googleplus");
+            params.put("screenSet", "DefaultMobile-RegistrationLogin");
+            GSAPI.getInstance().showPluginDialog("accounts.screenSet", params, new GSPluginListener() {
+                @Override
+                public void onLoad(GSPluginFragment gsPluginFragment, GSObject gsObject) {
+
+                }
+
+                @Override
+                public void onError(GSPluginFragment gsPluginFragment, GSObject gsObject) {
+
+                }
+
+                @Override
+                public void onEvent(GSPluginFragment gsPluginFragment, GSObject gsObject) {
+
+                }
+            }, new GSDialogListener() {
+                @Override
+                public void onDismiss(boolean b, GSObject gsObject) {
+
+                }
+            });
             return true;
         }
         else if (item.getItemId() == R.id.action_logout) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+            GSAPI.getInstance().logout();
             return true;
         }
 

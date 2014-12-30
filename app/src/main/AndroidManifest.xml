@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="gigyaandroiddemos.gigya.com.gigya_android_demos" >
+    package="gigyaandroiddemos.gigya.com.GigyaAndroidDemos" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,36 +12,7 @@
         android:theme="@style/AppTheme" >
         <!-- Splash screen -->
         <activity
-            android:name="gigyaandroiddemos.gigya.com.gigya_android_demos.MainActivity"
-            android:label="@string/app_name" >
-        </activity>
-        <activity
-            android:name="com.gigya.socialize.android.ui.HostActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity
-            android:name="com.gigya.socialize.android.login.providers.WebLoginActivity"
-            android:allowTaskReparenting="true"
-            android:launchMode="singleTask"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="gsapi"
-                    android:scheme="gigyaandroiddemos.gigya.com.gigya_android_demos" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name="com.facebook.LoginActivity" />
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/app_id" />
-
-        <activity
-            android:name="gigyaandroiddemos.gigya.com.gigya_android_demos.SplashScreen"
+            android:name="gigyaandroiddemos.gigya.com.GigyaAndroidDemos.SplashScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
@@ -51,6 +22,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="gigyaandroiddemos.gigya.com.GigyaAndroidDemos.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.gigya.socialize.android.ui.HostActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <activity
+            android:name="com.gigya.socialize.android.login.providers.WebLoginActivity"
+            android:allowTaskReparenting="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- must be the all lowercase version of the package and without underscores -->
+                <data android:scheme="gigyaandroiddemos.gigya.com.gigyaandroiddemos" android:host="gsapi" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.facebook.LoginActivity" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+
     </application>
 
 </manifest>

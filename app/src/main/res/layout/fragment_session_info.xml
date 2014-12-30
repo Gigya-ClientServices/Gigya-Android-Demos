@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:layout_gravity="center_horizontal|top"
 
-    tools:context="gigyaandroiddemos.gigya.com.gigya_android_demos.SessionInfoFragment">
+    tools:context="gigyaandroiddemos.gigya.com.GigyaAndroidDemos.SessionInfoFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

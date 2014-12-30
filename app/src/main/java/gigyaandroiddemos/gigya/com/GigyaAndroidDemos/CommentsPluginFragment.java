@@ -1,4 +1,4 @@
-package gigyaandroiddemos.gigya.com.gigya_android_demos;
+package gigyaandroiddemos.gigya.com.GigyaAndroidDemos;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -7,23 +7,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-
-import com.gigya.socialize.GSObject;
-import com.gigya.socialize.android.GSWebBridge;
-import com.gigya.socialize.android.event.GSWebBridgeListener;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link GSWebBridgeFragment.OnFragmentInteractionListener} interface
+ * {@link CommentsPluginFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link GSWebBridgeFragment#newInstance} factory method to
+ * Use the {@link CommentsPluginFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GSWebBridgeFragment extends Fragment {
+public class CommentsPluginFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -41,16 +35,20 @@ public class GSWebBridgeFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment GSWebBridgeFragment.
+     * @return A new instance of fragment CommentsPluginFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static GSWebBridgeFragment newInstance(String param1, String param2) {
-        GSWebBridgeFragment fragment = new GSWebBridgeFragment();
+    public static CommentsPluginFragment newInstance(String param1, String param2) {
+        CommentsPluginFragment fragment = new CommentsPluginFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public CommentsPluginFragment() {
+        // Required empty public constructor
     }
 
     @Override
@@ -65,33 +63,8 @@ public class GSWebBridgeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View layout = inflater.inflate(R.layout.fragment_gsweb_bridge, container, false);
-        WebView webView = (WebView) layout.findViewById(R.id.webView);
-        String url = "http://demos.gigya-cs.com/main_demo.html";
-        GSWebBridge.attach(webView, new GSWebBridgeListener() {
-            @Override
-            public void onPluginEvent(WebView webView, GSObject gsObject, String s) {
-
-            }
-        });
-        GSWebBridge.handleUrl(webView, url);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new webClient());
-        webView.loadUrl(url);
-
         // Inflate the layout for this fragment
-        return layout;
-    }
-
-    private class webClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView webView, String url) {
-            if (GSWebBridge.handleUrl(webView, url)) {
-                return true;
-            }
-            return false;
-        }
+        return inflater.inflate(R.layout.fragment_comments_plugin, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

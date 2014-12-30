@@ -1,4 +1,4 @@
-package gigyaandroiddemos.gigya.com.gigya_android_demos;
+package gigyaandroiddemos.gigya.com.GigyaAndroidDemos;
 
 import android.app.Activity;
 import android.content.Intent;

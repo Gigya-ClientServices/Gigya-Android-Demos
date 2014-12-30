@@ -33,6 +33,8 @@
     <string name="name_label">Name:</string>
     <string name="email_label">Email:</string>
 
+    <string name="error_dialog">Error</string>
+
     <string name="publish_user_action_label">Enter Text to Publish</string>
     <string name="publish_user_action_note">This will only publish to the currently logged in social network.  If you do not have an active social network connection than this will fail.</string>
 

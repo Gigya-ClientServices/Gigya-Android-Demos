@@ -1,5 +1,6 @@
-package gigyaandroiddemos.gigya.com.gigya_android_demos;
+package gigyaandroiddemos.gigya.com.GigyaAndroidDemos;
 
+import android.app.AlertDialog;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
@@ -21,7 +22,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.gigya.socialize.*;
 import com.gigya.socialize.android.*;
@@ -335,7 +335,13 @@ public class NavigationDrawerFragment extends Fragment {
 
                 @Override
                 public void onError(GSResponse gsResponse, Object o) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage("Login returned an error:\n" + gsResponse.getErrorMessage())
+                            .setTitle(R.string.error_dialog)
+                            .setCancelable(false);
 
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
             }, null);
             return true;
@@ -351,8 +357,14 @@ public class NavigationDrawerFragment extends Fragment {
                 }
 
                 @Override
-                public void onError(GSPluginFragment gsPluginFragment, GSObject gsObject) {
+                public void onError(GSPluginFragment gsPluginFragment, GSObject error) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage("Login returned an error:\n" + error.toJsonString())
+                            .setTitle(R.string.error_dialog)
+                            .setCancelable(false);
 
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
 
                 @Override

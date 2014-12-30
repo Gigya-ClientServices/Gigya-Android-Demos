@@ -4,7 +4,7 @@ android {
     compileSdkVersion 21
     buildToolsVersion '21.1.2'
     defaultConfig {
-        applicationId "gigyaandroiddemos.gigya.com.gigya_android_demos"
+        applicationId "gigyaandroiddemos.gigya.com.gigyaandroiddemos"
         minSdkVersion 17
         targetSdkVersion 21
         versionCode 1

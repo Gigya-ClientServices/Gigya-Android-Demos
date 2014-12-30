@@ -7,6 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+import com.gigya.socialize.GSObject;
+import com.gigya.socialize.android.GSWebBridge;
+import com.gigya.socialize.android.event.GSWebBridgeListener;
 
 
 /**
@@ -47,10 +53,6 @@ public class GSWebBridgeFragment extends Fragment {
         return fragment;
     }
 
-    public GSWebBridgeFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,8 +65,33 @@ public class GSWebBridgeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View layout = inflater.inflate(R.layout.fragment_gsweb_bridge, container, false);
+        WebView webView = (WebView) layout.findViewById(R.id.webView);
+        String url = "http://demos.gigya-cs.com/main_demo.html";
+        GSWebBridge.attach(webView, new GSWebBridgeListener() {
+            @Override
+            public void onPluginEvent(WebView webView, GSObject gsObject, String s) {
+
+            }
+        });
+        GSWebBridge.handleUrl(webView, url);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new webClient());
+        webView.loadUrl(url);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gsweb_bridge, container, false);
+        return layout;
+    }
+
+    private class webClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView webView, String url) {
+            if (GSWebBridge.handleUrl(webView, url)) {
+                return true;
+            }
+            return false;
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

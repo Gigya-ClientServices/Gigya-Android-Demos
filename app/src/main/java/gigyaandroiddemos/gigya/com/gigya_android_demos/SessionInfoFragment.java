@@ -7,12 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.util.Log;
 
 import com.gigya.socialize.*;
 import com.gigya.socialize.android.*;
+
+import com.squareup.picasso.*;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -121,6 +123,7 @@ public class SessionInfoFragment extends Fragment {
         final TextView statusText = (TextView) rootView.findViewById(R.id.status_value);
         final TextView nameText = (TextView) rootView.findViewById(R.id.name_value);
         final TextView emailText = (TextView) rootView.findViewById(R.id.email_value);
+        final ImageView avatarView = (ImageView) rootView.findViewById(R.id.avatar);
 
         if (gigya.getSession() != null){
             if (gigya.getSession().isValid()) {
@@ -137,7 +140,7 @@ public class SessionInfoFragment extends Fragment {
                                     MainActivity parent = (MainActivity) getActivity();
                                     Log.w("Gigya-Android-Demos", "Successfully set user");
                                     parent.setUser(response.getData());
-                                    setLoggedIn(statusText, nameText, emailText, response.getData());
+                                    setLoggedIn(statusText, nameText, emailText, avatarView, response.getData());
                                 } else {  // Error
                                     Log.w("Gigya-Android-Demos", "GSResponse: 'getAccountInfo' returned an error");
                                     Log.w("Gigya-Android-Demos", response.getErrorMessage());
@@ -149,36 +152,55 @@ public class SessionInfoFragment extends Fragment {
                             .sendRequest("accounts.getAccountInfo", null, resListener, null );
                 } else {
                     // Grab the user data
-                    setLoggedIn(statusText, nameText, emailText, user);
+                    setLoggedIn(statusText, nameText, emailText, avatarView, user);
                 }
 
             } else {
-                setLoggedOut(statusText, nameText, emailText);
+                setLoggedOut(statusText, nameText, emailText, avatarView);
             }
         } else {
-            setLoggedOut(statusText, nameText, emailText);
+            setLoggedOut(statusText, nameText, emailText, avatarView);
         }
     }
 
-    public void setLoggedOut(TextView status, TextView name, TextView email) {
+    public void setLoggedOut(TextView status, TextView name, TextView email, ImageView avatar) {
         status.setText(getString(R.string.logged_out));
         name.setText(getString(R.string.null_value));
         email.setText(getString(R.string.null_value));
+        setUnknownAvatar(avatar);
     }
 
-    public void setLoggedIn(TextView status, TextView name, TextView emailView, GSObject user) {
+    public void setLoggedIn(TextView status, TextView name, TextView emailView, ImageView avatar, GSObject user) {
         status.setText(getString(R.string.logged_in));
         try {
-            String first = user.getObject("profile").getString("firstName");
-            String last = user.getObject("profile").getString("lastName");
-            String email = user.getObject("profile").getString("email");
+            GSObject profile = user.getObject("profile");
+            String first = profile.getString("firstName");
+            String last = profile.getString("lastName");
+            String email = profile.getString("email");
+            if (profile.containsKey("photoURL")) {
+                setAvatar(avatar,profile.getString("photoURL"));
+            } else {
+                setUnknownAvatar(avatar);
+            }
             name.setText(first + " " + last);
             emailView.setText(email);
         } catch (Exception ex) {
             Log.w("Gigya-Android-Demos", "Something went horribly wrong with the user!");
-            Log.w("Gigya-Android-Demos", ex.toString());
-            //Log.w("myApp", user.toJsonString());
+            ex.printStackTrace();
         }
+    }
+
+    public void setAvatar(ImageView avatar, String url) {
+        Log.w("Gigya-Android-Demos", "Loading Image from: " + url);
+        Picasso.with(avatar.getContext())
+                .load(url)
+                .placeholder(R.drawable.help128)
+                .error(R.drawable.help128)
+                .into(avatar);
+    }
+
+    public void setUnknownAvatar(ImageView avatar) {
+        Picasso.with(avatar.getContext()).load(R.drawable.help128).into(avatar);
     }
 
 }

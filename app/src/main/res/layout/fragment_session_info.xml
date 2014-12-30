@@ -99,4 +99,16 @@
         android:layout_centerHorizontal="true"
         android:textStyle="bold" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/avatar"
+        android:src="@drawable/help128"
+        android:layout_below="@+id/email_value"
+        android:layout_centerHorizontal="true"
+        android:maxWidth="128px"
+        android:maxHeight="128px"
+        android:minWidth="128px"
+        android:minHeight="128px" />
+
 </RelativeLayout>

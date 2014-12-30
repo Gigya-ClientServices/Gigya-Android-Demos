@@ -13,14 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.Toast;
 import android.util.Log;
-//import android.support.v4.app.FragmentActivity;
 
 import com.gigya.socialize.*;
 import com.gigya.socialize.android.*;
 import com.gigya.socialize.android.event.*;
-
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
@@ -61,9 +58,7 @@ public class MainActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-        getFragmentManager();
+        //getFragmentManager();
 
         // Initialize Gigya before anything loads so it's available to all child fragments on load
         GSAPI.getInstance().initialize(this, getString(R.string.gigya_api_key));
@@ -79,6 +74,7 @@ public class MainActivity extends ActionBarActivity
                 mUser = null;
                 Log.w("Gigya-Android-Demos", "Logged Out of Gigya.");
                 MainActivity m = (MainActivity) getParent();
+
                 // Check if SessionInfo Fragment is shown, if it is then refresh the view.
                 Fragment f = (Fragment) getSupportFragmentManager().findFragmentByTag("SessionInfo");
                 if (f != null && f.isVisible()) {

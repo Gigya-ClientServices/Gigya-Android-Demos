@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.gigya.socialize.*;
 import com.gigya.socialize.android.*;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -118,25 +118,40 @@ public class SessionInfoFragment extends Fragment {
 
     public void refreshView() {
         GSAPI gigya = GSAPI.getInstance();
-        TextView statusText = (TextView) rootView.findViewById(R.id.status_value);
-        TextView nameText = (TextView) rootView.findViewById(R.id.name_value);
-        TextView emailText = (TextView) rootView.findViewById(R.id.email_value);
+        final TextView statusText = (TextView) rootView.findViewById(R.id.status_value);
+        final TextView nameText = (TextView) rootView.findViewById(R.id.name_value);
+        final TextView emailText = (TextView) rootView.findViewById(R.id.email_value);
 
         if (gigya.getSession() != null){
             if (gigya.getSession().isValid()) {
-                statusText.setText(getString(R.string.logged_in));
                 MainActivity parent = (MainActivity) getActivity();
                 GSObject user = parent.getUser();
-                try {
-                    String first = user.getString("profile.firstName");
-                    String last = user.getString("profile.lastName");
-                    String email = user.getString("profile.email");
-                    nameText.setText(first + " " + last);
-                    emailText.setText(email);
 
-                } catch (Exception ex) {
-
+                // Retrieve the user if it's not set. (Reloaded app with active session)
+                if (user == null) {
+                    GSResponseListener resListener = new GSResponseListener() {
+                        @Override
+                        public void onGSResponse(String method, GSResponse response, Object context) {
+                            try {
+                                if (response.getErrorCode()==0) { // SUCCESS! response status = OK
+                                    MainActivity parent = (MainActivity) getActivity();
+                                    Log.w("Gigya-Android-Demos", "Successfully set user");
+                                    parent.setUser(response.getData());
+                                    setLoggedIn(statusText, nameText, emailText, response.getData());
+                                } else {  // Error
+                                    Log.w("Gigya-Android-Demos", "GSResponse: 'getAccountInfo' returned an error");
+                                    Log.w("Gigya-Android-Demos", response.getErrorMessage());
+                                }
+                            } catch (Exception ex) {  ex.printStackTrace();  }
+                        }
+                    };
+                    GSAPI.getInstance()
+                            .sendRequest("accounts.getAccountInfo", null, resListener, null );
+                } else {
+                    // Grab the user data
+                    setLoggedIn(statusText, nameText, emailText, user);
                 }
+
             } else {
                 setLoggedOut(statusText, nameText, emailText);
             }
@@ -150,4 +165,20 @@ public class SessionInfoFragment extends Fragment {
         name.setText(getString(R.string.null_value));
         email.setText(getString(R.string.null_value));
     }
+
+    public void setLoggedIn(TextView status, TextView name, TextView emailView, GSObject user) {
+        status.setText(getString(R.string.logged_in));
+        try {
+            String first = user.getObject("profile").getString("firstName");
+            String last = user.getObject("profile").getString("lastName");
+            String email = user.getObject("profile").getString("email");
+            name.setText(first + " " + last);
+            emailView.setText(email);
+        } catch (Exception ex) {
+            Log.w("Gigya-Android-Demos", "Something went horribly wrong with the user!");
+            Log.w("Gigya-Android-Demos", ex.toString());
+            //Log.w("myApp", user.toJsonString());
+        }
+    }
+
 }

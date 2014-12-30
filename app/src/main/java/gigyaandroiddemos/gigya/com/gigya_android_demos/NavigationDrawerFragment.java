@@ -222,7 +222,7 @@ public class NavigationDrawerFragment extends Fragment {
 
                 // Insert the fragment by replacing any existing fragment
                 fragmentManager.beginTransaction()
-                    .replace(R.id.container, (Fragment) sessionInfoFragment)
+                    .replace(R.id.container, (Fragment) sessionInfoFragment, "SessionInfo")
                     .commit();
                 break;
             case 1:
@@ -234,7 +234,7 @@ public class NavigationDrawerFragment extends Fragment {
 
                 // Insert the fragment by replacing any existing fragment
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, gsWebBridgeFragment)
+                        .replace(R.id.container, gsWebBridgeFragment, "GSWebBridge")
                         .commit();
                 break;
             case 2:
@@ -246,7 +246,7 @@ public class NavigationDrawerFragment extends Fragment {
 
                 // Insert the fragment by replacing any existing fragment
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, publishUserActionFragment)
+                        .replace(R.id.container, publishUserActionFragment, "PublishUserAction")
                         .commit();
                 break;
             case 3:
@@ -258,7 +258,7 @@ public class NavigationDrawerFragment extends Fragment {
 
                 // Insert the fragment by replacing any existing fragment
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, commentsPluginFragment)
+                        .replace(R.id.container, commentsPluginFragment, "CommentsPlugin")
                         .commit();
                 break;
             default:
@@ -315,7 +315,6 @@ public class NavigationDrawerFragment extends Fragment {
 
         // Handle Actions Here
         if (item.getItemId() == R.id.action_login_native) {
-            // TODO: Gigya native social login here.
             GSObject params = new GSObject();
             params.put("enabledProviders", "facebook,twitter,googleplus");
             GSAPI.getInstance().showLoginUI(params, new GSLoginUIListener() {
@@ -342,7 +341,6 @@ public class NavigationDrawerFragment extends Fragment {
             return true;
         }
         else if (item.getItemId() == R.id.action_login_raas) {
-            // TODO: Gigya RaaS login here.
             GSObject params = new GSObject();
             params.put("enabledProviders", "facebook,twitter,googleplus");
             params.put("screenSet", "DefaultMobile-RegistrationLogin");
@@ -372,6 +370,9 @@ public class NavigationDrawerFragment extends Fragment {
         else if (item.getItemId() == R.id.action_logout) {
             GSAPI.getInstance().logout();
             return true;
+        }
+        else if (item.getItemId() == R.id.action_quit) {
+            getActivity().finish();
         }
 
         return super.onOptionsItemSelected(item);

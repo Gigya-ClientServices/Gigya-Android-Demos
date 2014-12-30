@@ -1,6 +1,7 @@
 package gigyaandroiddemos.gigya.com.GigyaAndroidDemos;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
@@ -338,7 +339,11 @@ public class NavigationDrawerFragment extends Fragment {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setMessage("Login returned an error:\n" + gsResponse.getErrorMessage())
                             .setTitle(R.string.error_dialog)
-                            .setCancelable(false);
+                            .setCancelable(false)
+                            .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                }
+                            });
 
                     AlertDialog dialog = builder.create();
                     dialog.show();
@@ -361,7 +366,11 @@ public class NavigationDrawerFragment extends Fragment {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setMessage("Login returned an error:\n" + error.toJsonString())
                             .setTitle(R.string.error_dialog)
-                            .setCancelable(false);
+                            .setCancelable(false)
+                            .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                }
+                            });
 
                     AlertDialog dialog = builder.create();
                     dialog.show();

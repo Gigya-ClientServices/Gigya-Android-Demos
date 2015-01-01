@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gigya.socialize.GSObject;
+import com.gigya.socialize.android.GSPluginFragment;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,8 +66,17 @@ public class CommentsPluginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_comments_plugin, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_comments_plugin, container, false);
+
+        GSObject params = new GSObject();
+        params.put("categoryID" ,"Comments");
+        params.put("streamID" ,"Gigya-Android-Demos");
+        GSPluginFragment commentsFragment = GSPluginFragment.newInstance("comments.commentsUI", params);
+
+        getChildFragmentManager().beginTransaction().add(R.id.commentsLayout, commentsFragment).commit();
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

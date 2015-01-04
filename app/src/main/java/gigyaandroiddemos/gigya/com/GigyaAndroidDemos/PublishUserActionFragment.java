@@ -7,6 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.gigya.socialize.GSObject;
+import com.gigya.socialize.android.GSAPI;
 
 
 /**
@@ -63,15 +68,28 @@ public class PublishUserActionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_publish_user_action, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_publish_user_action, container, false);
+        final GSAPI gigya = GSAPI.getInstance();
+        final EditText editText = (EditText) view.findViewById(R.id.editText);
+        Button publishButton = (Button) view.findViewById(R.id.publishButton);
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        publishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity parent = (MainActivity) getActivity();
+                GSObject params = new GSObject();
+                GSObject userAction = new GSObject();
+
+                userAction.put("title", "Gigya Android Demos");
+                userAction.put("description", editText.getText().toString());
+
+                params.put("userAction", userAction);
+
+                gigya.sendRequest("socialize.publishUserAction", params, true, null, null);
+            }
+        });
+
+        return view;
     }
 
     @Override

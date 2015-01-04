@@ -4,7 +4,24 @@
     tools:context="gigyaandroiddemos.gigya.com.GigyaAndroidDemos.PublishUserActionFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+
+    <EditText
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_margin="10dp"
+        android:minLines="10"
+        android:maxLines="10"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porttitor quam ut mauris euismod, rhoncus maximus urna laoreet. Duis efficitur mollis bibendum. Nullam odio velit, varius eget ligula vitae, dictum blandit est. Nunc velit diam, feugiat a erat at, semper hendrerit orci."
+        android:gravity="left|top" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Publish User Action"
+        android:id="@+id/publishButton"
+        android:layout_gravity="center_horizontal|bottom" />
 
 </FrameLayout>

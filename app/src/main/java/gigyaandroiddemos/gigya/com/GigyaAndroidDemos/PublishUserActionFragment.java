@@ -1,6 +1,8 @@
 package gigyaandroiddemos.gigya.com.GigyaAndroidDemos;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,10 @@ import android.widget.EditText;
 
 import com.gigya.socialize.GSObject;
 import com.gigya.socialize.android.GSAPI;
+import com.gigya.socialize.android.GSPermissionResultHandler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -79,6 +85,32 @@ public class PublishUserActionFragment extends Fragment {
                 MainActivity parent = (MainActivity) getActivity();
                 GSObject params = new GSObject();
                 GSObject userAction = new GSObject();
+
+                if (gigya.getLastLoginProvider() == "facebook") {
+                    ArrayList<String> permissions = new ArrayList<String>();
+                    permissions.add("publish_actions");
+                    try {
+                        gigya.requestNewFacebookPublishPermissions(permissions, new GSPermissionResultHandler() {
+                            @Override
+                            public void onResult(boolean b, Exception e, List<String> strings) {
+                                if (!b) {
+                                    // Handle Error
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                    builder.setMessage("Facebook permissions failed, returned an error:\n" + e.getMessage())
+                                            .setTitle(R.string.error_dialog)
+                                            .setCancelable(false)
+                                            .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                }
+                                            });
+                                    return;
+                                }
+                            }
+                        });
+                    } catch (Exception ex) {
+
+                    }
+                }
 
                 userAction.put("title", "Gigya Android Demos");
                 userAction.put("description", editText.getText().toString());

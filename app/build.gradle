@@ -22,8 +22,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:21.0.3'
-    compile files('libs/gigya-sdk-3.1.2.jar')
     compile project(':facebook')
     compile 'com.squareup.picasso:picasso:2.4.0'
+    compile files('libs/gigya-sdk-3.2.jar')
+    compile 'com.android.support:appcompat-v7:21.0.3'
 }

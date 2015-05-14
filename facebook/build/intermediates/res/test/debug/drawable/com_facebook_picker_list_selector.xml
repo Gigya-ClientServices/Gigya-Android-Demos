@@ -25,4 +25,4 @@
     <item android:state_focused="true"                                                             android:drawable="@drawable/com_facebook_picker_list_focused" />
 
 </selector>
-<!-- From: file:/Users/jayreardon/repos/Gigya-Android-Demos/facebook/res/drawable/com_facebook_picker_list_selector.xml --><!-- From: file:/Users/jayreardon/repos/Gigya-Android-Demos/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_picker_list_selector.xml -->
+<!-- From: file:/Users/giovannialvarez/Repos/Client%20Projects/Android/Gigya/Gigya-Android-Demos/facebook/res/drawable/com_facebook_picker_list_selector.xml --><!-- From: file:/Users/giovannialvarez/Repos/Client%20Projects/Android/Gigya/Gigya-Android-Demos/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_picker_list_selector.xml -->

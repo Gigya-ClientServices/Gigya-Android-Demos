@@ -69,7 +69,7 @@ public class GSWebBridgeFragment extends Fragment {
         View layout = inflater.inflate(R.layout.fragment_gsweb_bridge, container, false);
         WebView webView = (WebView) layout.findViewById(R.id.webView);
         String url = "http://demos.gigya-cs.com/main_demo.html";
-        GSWebBridge.attach(webView, new GSWebBridgeListener() {
+        GSWebBridge.attach(this.getActivity(), webView, new GSWebBridgeListener() {
             @Override
             public void onPluginEvent(WebView webView, GSObject gsObject, String s) {
 

@@ -26,6 +26,5 @@ dependencies {
     compile files('libs/gigya-sdk-3.3.1.jar')
     compile 'com.android.support:support-v4:21.0.3'
     compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.facebook.android:facebook-android-sdk:4.1.0'
-    compile 'com.facebook.android:facebook-android-sdk:4.2.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
 }

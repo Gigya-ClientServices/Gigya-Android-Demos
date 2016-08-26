@@ -24,3 +24,12 @@ This is an Android Demo project written in java with Android Studio that provide
 8. Follow the steps in [Facebooks documentation](https://developers.facebook.com/docs/android/getting-started#release-key-hash) on adding this android app and signing key to your Facebook App.
 9. From the Menu, select **Build > Clean Project**. 
 10. From the Menu, select **Build > Make Project**. 
+
+## Dependancies
+ * Android SDK: v24 - Nougat (Android 7)
+ * Build Tools: 23.0.2
+ * Android Studio: 2.1.3
+ * Gradle: 2.1.3
+ * [Picasso](https://github.com/square/picasso): 2.5.2
+ * [Facebook Android SDK](https://developers.facebook.com/docs/android/): 4.15.0
+ 

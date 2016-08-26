@@ -30,6 +30,7 @@ This is an Android Demo project written in java with Android Studio that provide
  * Build Tools: 23.0.2
  * Android Studio: 2.1.3
  * Gradle: 2.1.3
+ * [Gigya](http://developers.gigya.com/display/GD/Android): 3.3.3
  * [Picasso](https://github.com/square/picasso): 2.5.2
  * [Facebook Android SDK](https://developers.facebook.com/docs/android/): 4.15.0
  

@@ -26,11 +26,11 @@ This is an Android Demo project written in java with Android Studio that provide
 10. From the Menu, select **Build > Make Project**. 
 
 ## Dependancies
- * Android SDK: v24 - Nougat (Android 7)
- * Build Tools: 23.0.2
- * Android Studio: 2.1.3
- * Gradle: 2.1.3
- * [Gigya](http://developers.gigya.com/display/GD/Android): 3.3.3
+ * Android SDK: v25 - Nougat (Android 7.1.1)
+ * Build Tools: 25.0.1
+ * Android Studio: 2.2.2
+ * Gradle: 2.2.2
+ * [Gigya](http://developers.gigya.com/display/GD/Android): 3.3.4
  * [Picasso](https://github.com/square/picasso): 2.5.2
  * [Facebook Android SDK](https://developers.facebook.com/docs/android/): 4.15.0
  
